@@ -184,7 +184,7 @@ public class SearchResource {
      * @param encodedString
      * @return the decoded string
      */
-    public static byte[] decodeBase64EncodedString(final String encodedString) {
+    private static byte[] decodeBase64EncodedString(final String encodedString) {
             return Base64.getUrlDecoder().decode(encodedString);
     }
     
@@ -194,7 +194,7 @@ public class SearchResource {
      * @param encodedString
      * @return boolean value indicating the result
      */
-    public static boolean checkForBinaryDataAfterDecode(final String encodedString) {
+    private static boolean checkForBinaryDataAfterDecode(final String encodedString) {
         try {
         	String decodedString = new String(Base64.getUrlDecoder().decode(encodedString), "utf-8");
         	return decodedString.matches("^[0-1]*$");
