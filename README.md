@@ -1,6 +1,8 @@
 # Introduction
 This is a web application for comparing the Base64 encoded binary value.
 
+The repository location is: https://github.com/sasanksamudrala/RestCompare.git
+
 All API related documentation can be found on [RestComparison](https://app.swaggerhub.com/apis/sasanksamudrala/RestComparison/v1)
 
 Few examples of the REST API URI are:
