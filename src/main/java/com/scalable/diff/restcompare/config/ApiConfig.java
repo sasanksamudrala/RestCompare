@@ -16,27 +16,27 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration
 public class ApiConfig {
-	
-	/**
+    
+    /**
      * Will define how JSON strings in request are de-serialized in POJOs used to Model our data
      * 
      * @return new Jackson Object Mapper
      */
-	@Bean
-	public ObjectMapper objectMapper () {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.registerModule(new JavaTimeModule());
-		return new ObjectMapper();
-	}
-	
-	/**
+    @Bean
+    public ObjectMapper objectMapper () {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        return new ObjectMapper();
+    }
+    
+    /**
      * Serializes Java objects into a JSON String in the response body
      * 
      * @return new Object Mapper
      */
-	@Bean
-	public ObjectWriter objectWriter (ObjectMapper objectMapper) {
-		return objectMapper.writerWithDefaultPrettyPrinter();
-	}
+    @Bean
+    public ObjectWriter objectWriter (ObjectMapper objectMapper) {
+        return objectMapper.writerWithDefaultPrettyPrinter();
+    }
 
 }

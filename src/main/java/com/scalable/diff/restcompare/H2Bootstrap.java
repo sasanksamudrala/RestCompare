@@ -8,7 +8,7 @@ import com.scalable.diff.restcompare.entity.JsonBinaryDataEntity;
 import com.scalable.diff.restcompare.repository.JsonBinaryDataRepository;
 
 /**
- * Bootstraps data in ID value "0" on start of application
+ * Bootstraps data on startup of the application
  * 
  * @author Sasank Samudrala
  * @version 0.0.1
@@ -16,21 +16,17 @@ import com.scalable.diff.restcompare.repository.JsonBinaryDataRepository;
 
 @Component
 public class H2Bootstrap implements CommandLineRunner {
-	
-	@Autowired
-	JsonBinaryDataRepository jsonBinaryDataRepository;
+    
+    @Autowired
+    JsonBinaryDataRepository jsonBinaryDataRepository;
 
-	@Override
-	public void run(String... arg0) throws Exception {		
-		jsonBinaryDataRepository.save(new JsonBinaryDataEntity(0, "ew0KICAgICJkYXRhIjogIlRoaXMgaXMgYSBTdHJpbmciDQp9", "left"));
-		jsonBinaryDataRepository.save(new JsonBinaryDataEntity(0, "ew0KICAgICJkYXRhIjogIlRoaXMgaXMgYSBTdHJpbmciDQp9", "right"));
-		
-		
-		/*Iterable<JsonBinaryDataEntity> itr = jsonBinaryDataRepository.findAll();
-		
-		for (JsonBinaryDataEntity data: itr) {
-			System.out.println(data.getEncodedValue());
-		}*/
-	}
-
+    /**
+     * Bootstraps data into the ID value "0" on start of application as default
+     * 
+     */
+    @Override
+    public void run(String... arg0) throws Exception {        
+        jsonBinaryDataRepository.save(new JsonBinaryDataEntity(0, "ew0KICAgICJkYXRhIjogIlRoaXMgaXMgYSBTdHJpbmciDQp9", "left"));
+        jsonBinaryDataRepository.save(new JsonBinaryDataEntity(0, "ew0KICAgICJkYXRhIjogIlRoaXMgaXMgYSBTdHJpbmciDQp9", "right"));
+    }
 }

@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 public class RestcompareApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RestcompareApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RestcompareApplication.class, args);
+    }
 }

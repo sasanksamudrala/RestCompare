@@ -10,23 +10,23 @@ import java.util.List;
  */
 public class ComparisonResultResponse {
 
-	private List<Integer> position;
-	private String result;
-	
-	
-	public List<Integer> getPosition() {
-		return position;
-	}
-	public void setPosition(List<Integer> position) {
-		this.position = position;
-	}
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
-	}
-	
-	
-	
+    private List<Integer> position;
+    private String result;
+    
+    
+    public List<Integer> getPosition() {
+        return position;
+    }
+    public void setPosition(List<Integer> position) {
+        this.position = position;
+    }
+    public String getResult() {
+        return result;
+    }
+    public void setResult(String result) {
+        this.result = result;
+    }
+    
+    
+    
 }

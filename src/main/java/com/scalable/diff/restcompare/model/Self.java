@@ -8,15 +8,15 @@ package com.scalable.diff.restcompare.model;
  */
 public class Self {
 
-	private String ref;
+    private String ref;
 
-	public String getRef() {
-		return ref;
-	}
+    public String getRef() {
+        return ref;
+    }
 
-	public void setRef(String ref) {
-		this.ref = ref;
-	}
-	
-	
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+    
+    
 }

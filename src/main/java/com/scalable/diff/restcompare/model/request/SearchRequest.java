@@ -8,15 +8,15 @@ package com.scalable.diff.restcompare.model.request;
  */
 public class SearchRequest {
 
-	private String encodedValue;
+    private String encodedValue;
 
-	public String getEncodedValue() {
-		return encodedValue;
-	}
+    public String getEncodedValue() {
+        return encodedValue;
+    }
 
-	public void setEncodedValue(String encodedValue) {
-		this.encodedValue = encodedValue;
-	}
-	
-	
+    public void setEncodedValue(String encodedValue) {
+        this.encodedValue = encodedValue;
+    }
+    
+    
 }

@@ -32,66 +32,66 @@ import static io.restassured.RestAssured.given;
 @SpringBootTest(classes = RestcompareApplication.class, 
 webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SearchResource {
-	
-	@LocalServerPort
-	private int port;
+    
+    @LocalServerPort
+    private int port;
 
-	@Before
-	public void setUp() throws Exception {
-		RestAssured.port = Integer.valueOf(port);
-		RestAssured.basePath = ResourceConstants.RESOURCE_V1;
-		RestAssured.baseURI = "http://localhost";
-	}
+    @Before
+    public void setUp() throws Exception {
+        RestAssured.port = Integer.valueOf(port);
+        RestAssured.basePath = ResourceConstants.RESOURCE_V1;
+        RestAssured.baseURI = "http://localhost";
+    }
 
-	
-	@Test
-	public void testAll() {
-		given().when().get("/all").then().statusCode(200);
-	}
-	
-	@Test
-	public void testIdAll() {
-		given().when().get(0+"/all").then().statusCode(200);
-	}
-	
-	@Test
-	public void testIdLeft() throws JSONException, JsonMappingException, JsonParseException, IOException {
-		JSONObject jsonObj = new JSONObject().put("encodedValue","MTAxMDEx");
-		ObjectMapper mapper = new ObjectMapper();
-		SearchRequest searchRequest = mapper.readValue(jsonObj.toString(), SearchRequest.class);  
-		
-		given()
-			.contentType("application/json")
-			.body(searchRequest)
-		.when()
-			.post(0+"/left")
-		.then()
-			.statusCode(201);
-	}
-	
-	@Test
-	public void testIdRight() throws JSONException, JsonMappingException, JsonParseException, IOException {
-		JSONObject jsonObj = new JSONObject().put("encodedValue","MTAxMDEx");
-		ObjectMapper mapper = new ObjectMapper();
-		SearchRequest searchRequest = mapper.readValue(jsonObj.toString(), SearchRequest.class);  
-		
-		given()
-			.contentType("application/json")
-			.body(searchRequest)
-		.when()
-			.post(0+"/right")
-		.then()
-			.statusCode(201);
-	}
-	
-	@Test
-	public void testIdCompareResource() throws JSONException, JsonMappingException, JsonParseException, IOException {
-		given()
-			.when()
-				.get("/"+0)
-			.then()
-				.statusCode(406);
-	}
-	
+    
+    @Test
+    public void testAll() {
+        given().when().get("/all").then().statusCode(200);
+    }
+    
+    @Test
+    public void testIdAll() {
+        given().when().get(0+"/all").then().statusCode(200);
+    }
+    
+    @Test
+    public void testIdLeft() throws JSONException, JsonMappingException, JsonParseException, IOException {
+        JSONObject jsonObj = new JSONObject().put("encodedValue","MTAxMDEx");
+        ObjectMapper mapper = new ObjectMapper();
+        SearchRequest searchRequest = mapper.readValue(jsonObj.toString(), SearchRequest.class);  
+        
+        given()
+            .contentType("application/json")
+            .body(searchRequest)
+        .when()
+            .post(0+"/left")
+        .then()
+            .statusCode(201);
+    }
+    
+    @Test
+    public void testIdRight() throws JSONException, JsonMappingException, JsonParseException, IOException {
+        JSONObject jsonObj = new JSONObject().put("encodedValue","MTAxMDEx");
+        ObjectMapper mapper = new ObjectMapper();
+        SearchRequest searchRequest = mapper.readValue(jsonObj.toString(), SearchRequest.class);  
+        
+        given()
+            .contentType("application/json")
+            .body(searchRequest)
+        .when()
+            .post(0+"/right")
+        .then()
+            .statusCode(201);
+    }
+    
+    @Test
+    public void testIdCompareResource() throws JSONException, JsonMappingException, JsonParseException, IOException {
+        given()
+            .when()
+                .get("/"+0)
+            .then()
+                .statusCode(406);
+    }
+    
 
 }
