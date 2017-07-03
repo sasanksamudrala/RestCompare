@@ -1,6 +1,6 @@
 package com.scalable.diff.restcompare;
 
-import static org.junit.Assert.*;
+import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
 
@@ -16,11 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.scalable.diff.restcompare.rest.ResourceConstants;
 import com.scalable.diff.restcompare.model.request.SearchRequest;
+import com.scalable.diff.restcompare.rest.ResourceConstants;
 
 import io.restassured.RestAssured;
-import static io.restassured.RestAssured.given;
 
 /**
  * Unit test for the application functionality
