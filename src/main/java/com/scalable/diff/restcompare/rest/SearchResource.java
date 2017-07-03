@@ -41,10 +41,10 @@ import javax.transaction.Transactional;
 public class SearchResource {
     
     @Autowired
-    JsonBinaryDataRepository jsonBinaryDataRepository;
+    private JsonBinaryDataRepository jsonBinaryDataRepository;
     
     @Autowired
-    PageableJsonBinaryDataRepository pageableJsonBinaryDataRepository;
+    private PageableJsonBinaryDataRepository pageableJsonBinaryDataRepository;
     
 
     /**
@@ -127,7 +127,7 @@ public class SearchResource {
     
     
     /**
-     * Get the ID value from the user and List all the data present for that particular ID
+     * Additional functionality to Get the ID value from the user and List all the data present for that particular ID
      * In case of any issue with the given input, mis-match of data, etc the respective message will be sent as response
      * In case of invalid data the Http status "Not Acceptible" will be returned
      * 
@@ -144,7 +144,7 @@ public class SearchResource {
     
     
     /**
-     * Lists all the data present in the system
+     * Additional functionality to List all the data present in the system
      * The Content tag will be empty in case no data is present
      * 
      * @param inputId
