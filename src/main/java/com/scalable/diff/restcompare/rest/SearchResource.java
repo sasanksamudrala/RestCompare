@@ -155,7 +155,7 @@ public class SearchResource {
      * @return Comparison result for the user
      */
 	@RequestMapping(path=ResourceConstants.ID_ALL, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Page<SearchResponse> getAllValues (@PathVariable Integer inputId, Pageable pageable) {
+	public Page<SearchResponse> getAllValuesForGivenId (@PathVariable Integer inputId, Pageable pageable) {
 		Page<JsonBinaryDataEntity> jsonBinaryDataEntityList = pageableJsonBinaryDataRepository.findByInputId(inputId, pageable);
 		return jsonBinaryDataEntityList.map(new JsonBinaryDataEntityToSearchResponseConverter());
 	}
