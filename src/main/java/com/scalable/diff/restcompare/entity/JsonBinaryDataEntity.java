@@ -33,10 +33,25 @@ public class JsonBinaryDataEntity {
     private String direction;
     
     
+    /**
+     * Constructor for the class.
+     * 
+     */
     public JsonBinaryDataEntity() {
         super();
     }
 
+    /**
+     * Constructor for the class.
+     * 
+     * @param inputId
+     *             the input Id from the user
+     * @param encodedValue
+     *             the Base 64 encoded value
+     * @param direction
+     *             the Left or Right window
+     * 
+     */
     public JsonBinaryDataEntity(Integer inputId, String encodedValue, String direction) {
         super();
         this.inputId = inputId;
@@ -45,26 +60,59 @@ public class JsonBinaryDataEntity {
     }
     
 
+    /**
+     * Getter method to fetch the input ID provided by the user.
+     * 
+     * @return the ID value
+     */
     public Integer getInputId() {
         return inputId;
     }
 
+    /**
+     * Sets the input ID provided by the user.
+     * 
+     * @param inputId
+     *            the ID value
+     */
     public void setInputId(Integer inputId) {
         this.inputId = inputId;
     }
 
+    /**
+     * Getter method to fetch the Base64 encoded Binary value provided by the user.
+     * 
+     * @return the encoded value
+     */
     public String getEncodedValue() {
         return encodedValue;
     }
 
+    /**
+     * Sets the Base 64 encoded string.
+     * 
+     * @param encodedString
+     *            the encoded String value
+     */
     public void setEncodedValue(String encodedValue) {
         this.encodedValue = encodedValue;
     }
 
+    /**
+     * Gets the Direction indicating whether the given data is for Left or Right window.
+     * 
+     * @return the left or right direction
+     */
     public String getDirection() {
         return direction;
     }
 
+    /**
+     * Sets the Direction indicating whether the given data is for Left or Right window.
+     * 
+     * @param direction
+     *            the left or right direction
+     */
     public void setDirection(String direction) {
         this.direction = direction;
     }
