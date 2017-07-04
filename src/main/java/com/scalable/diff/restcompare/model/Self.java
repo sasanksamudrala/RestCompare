@@ -10,10 +10,21 @@ public class Self {
 
     private String ref;
 
+    /**
+     * Gets the reference link value.
+     * 
+     * @return the reference link
+     */
     public String getRef() {
         return ref;
     }
 
+    /**
+     * Sets the reference link value.
+     * 
+     * @param ref
+     *            the reference link
+     */
     public void setRef(String ref) {
         this.ref = ref;
     }

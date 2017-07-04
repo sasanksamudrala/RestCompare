@@ -10,6 +10,10 @@ public class StaticConstants {
     public static final String RIGHT = "right";
     public static final String LEFT = "left";
     
+    /**
+     * Constructor for the class.
+     * 
+     */
     private StaticConstants() {
         //Private constructor
     }
