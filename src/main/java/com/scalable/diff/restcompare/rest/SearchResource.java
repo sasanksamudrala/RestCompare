@@ -186,6 +186,19 @@ public class SearchResource {
         }
     }
     
+    /**
+     * Compares the Byte arrays which contain the Binary value.
+     *
+     * @param leftByteArray
+                the Byte value of the Left window data
+     * @param rightByteArray
+                the Byte value of the Right window data
+     * @param comparisonResultResponse
+                the ComparisonResultResponse object which needs to be populated
+     *        
+     * @return comparisonResultResponse
+     *            the comparisonResultResponse object
+     */
     private static ComparisonResultResponse compareByteArrays(byte[] rightByteArray, byte[] leftByteArray, ComparisonResultResponse comparisonResultResponse) {
         if (rightByteArray.length != leftByteArray.length) {
             comparisonResultResponse.setResult("The data are not of Equal size");
