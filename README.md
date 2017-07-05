@@ -42,6 +42,7 @@ I have implemented Paging for this end point.
 
 ## Documentation
 All API related documentation can be found on [Swagger](https://app.swaggerhub.com/apis/sasanksamudrala/RestComparison/v1)
+Swagger docs within localhost application are on this [URL](http://localhost:8081/v2/api-docs)
 
 Few examples of the REST API URI are:
 I have used the value "1" for the ID parameter in this example.
