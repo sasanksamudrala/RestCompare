@@ -92,10 +92,10 @@ public class SearchResourceIntegrationTest {
     public void testUnEqualSizedData() throws JSONException, JsonMappingException, JsonParseException, IOException {
     	ObjectMapper mapper = new ObjectMapper();
     	
-        JSONObject jsonObjOne = new JSONObject().put("encodedValue","MTExMDA=");
+        JSONObject jsonObjOne = new JSONObject().put("encodedValue","MDExMTAxMTAwMTEwMDEwMTAxMTEwMDEwMDExMTEwMDE=");
         SearchRequest searchRequestOne = mapper.readValue(jsonObjOne.toString(), SearchRequest.class);  
         
-        JSONObject jsonObjTwo = new JSONObject().put("encodedValue","MTExMDAx");
+        JSONObject jsonObjTwo = new JSONObject().put("encodedValue","MDExMTAwMTEwMTEwMDAwMTAxMTEwMDExMDExMDAwMDEwMTEwMTExMDAxMTAxMDEx");
         SearchRequest searchRequestTwo = mapper.readValue(jsonObjTwo.toString(), SearchRequest.class);  
         
         given()

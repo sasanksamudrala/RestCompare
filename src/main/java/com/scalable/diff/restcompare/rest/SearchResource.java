@@ -105,18 +105,19 @@ public class SearchResource {
      *             the input Id given by the user
      * 
      * @return Comparison result for the user
+     * @throws UnsupportedEncodingException 
      */
     @RequestMapping(path=ResourceConstants.RESOURCE_COMPARE, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ComparisonResultResponse> compareResource (@PathVariable Integer inputId) {
+    public ResponseEntity<ComparisonResultResponse> compareResource (@PathVariable Integer inputId) throws UnsupportedEncodingException {
         if (!jsonBinaryDataRepository.findByInputIdAndDirection(inputId, StaticConstants.RIGHT).isEmpty() && !jsonBinaryDataRepository.findByInputIdAndDirection(inputId, StaticConstants.LEFT).isEmpty()) {
             JsonBinaryDataEntity jsonBinaryDataEntityRight = jsonBinaryDataRepository.findByInputIdAndDirection(inputId, StaticConstants.RIGHT).get(0);
             JsonBinaryDataEntity jsonBinaryDataEntityLeft = jsonBinaryDataRepository.findByInputIdAndDirection(inputId, StaticConstants.LEFT).get(0);
             
             if (checkForBinaryDataAfterDecode(jsonBinaryDataEntityRight.getEncodedValue()) && checkForBinaryDataAfterDecode(jsonBinaryDataEntityLeft.getEncodedValue())) {
-                byte[] rightByteArray = decodeBase64EncodedString(jsonBinaryDataEntityRight.getEncodedValue());            
-                byte[] leftByteArray = decodeBase64EncodedString(jsonBinaryDataEntityLeft.getEncodedValue());
+            	String rightText = binaryToText(decodeBase64EncodedString(jsonBinaryDataEntityRight.getEncodedValue()));            
+                String leftText = binaryToText(decodeBase64EncodedString(jsonBinaryDataEntityLeft.getEncodedValue()));
                 ComparisonResultResponse comparisonResultResponse = new ComparisonResultResponse();
-                comparisonResultResponse = compareByteArrays(rightByteArray, leftByteArray, comparisonResultResponse);
+                comparisonResultResponse = compareString(rightText, leftText, comparisonResultResponse);
                 return new ResponseEntity<>(comparisonResultResponse, HttpStatus.OK);
             }
         }
@@ -165,10 +166,67 @@ public class SearchResource {
      *
      * @param encodedString
      * @return the decoded string
+     * @throws UnsupportedEncodingException 
      */
-    private static byte[] decodeBase64EncodedString(final String encodedString) {
-            return Base64.getUrlDecoder().decode(encodedString);
+    private static String decodeBase64EncodedString(final String encodedString) throws UnsupportedEncodingException {
+    	return new String(Base64.getUrlDecoder().decode(encodedString), "utf-8");
     }
+    
+    /**
+     * Compares the Binary data to Text String.
+     *
+     * @param info
+                the binary value
+     *        
+     * @return the text value string
+     */
+    private static String binaryToText(String info)throws UnsupportedEncodingException{
+		String input = info;
+		StringBuilder output = new StringBuilder();
+		for(int i = 0; i <= input.length() - 8; i+=8)
+		{
+		    int characterValue = Integer.parseInt(input.substring(i, i+8), 2);
+		    output.append((char) characterValue);
+		}   
+		return output.toString();
+    }
+    
+    /**
+     * Compares the left and right window text.
+     *
+     * @param leftText
+                the Left window data
+     * @param rightText
+                the Right window data
+     * @param comparisonResultResponse
+                the ComparisonResultResponse object which needs to be populated
+     *        
+     * @return comparisonResultResponse
+     *            the comparisonResultResponse object
+     */
+    private static ComparisonResultResponse compareString(String rightText, String leftText, ComparisonResultResponse comparisonResultResponse) {
+    	if (rightText.length() != leftText.length()) {
+            comparisonResultResponse.setResult("The data are not of Equal size");
+        } else {
+            List<Integer> differentPositionList = new ArrayList<>();
+            for (int i=0; i < rightText.length(); i++) {
+            	char chA = rightText.charAt(i);
+        	    char chB = leftText.charAt(i);
+        	    if (chA != chB) {
+        	    	differentPositionList.add(i+1);
+        	    }
+            }
+            if (differentPositionList.isEmpty()) {
+                comparisonResultResponse.setResult("The data are Equal");
+            } else {
+                comparisonResultResponse.setPosition(differentPositionList);
+                comparisonResultResponse.setResult("The data are different");
+            }
+        }
+        return comparisonResultResponse;
+    	
+    }
+
     
     /**
      * Checks whether the decoded base64 value is binary value or not.
@@ -186,38 +244,6 @@ public class SearchResource {
         }
     }
     
-    /**
-     * Compares the Byte arrays which contain the Binary value.
-     *
-     * @param leftByteArray
-                the Byte value of the Left window data
-     * @param rightByteArray
-                the Byte value of the Right window data
-     * @param comparisonResultResponse
-                the ComparisonResultResponse object which needs to be populated
-     *        
-     * @return comparisonResultResponse
-     *            the comparisonResultResponse object
-     */
-    private static ComparisonResultResponse compareByteArrays(byte[] rightByteArray, byte[] leftByteArray, ComparisonResultResponse comparisonResultResponse) {
-        if (rightByteArray.length != leftByteArray.length) {
-            comparisonResultResponse.setResult("The data are not of Equal size");
-        } else {
-            List<Integer> differentPositionList = new ArrayList<>();
-            for (int i=0; i < rightByteArray.length; i++) {
-                if (rightByteArray[i] != leftByteArray[i]) {
-                    differentPositionList.add(i+1);
-                }
-            }
-            if (differentPositionList.isEmpty()) {
-                comparisonResultResponse.setResult("The data are Equal");
-            } else {
-                comparisonResultResponse.setPosition(differentPositionList);
-                comparisonResultResponse.setResult("The data are different");
-            }
-        }
-        return comparisonResultResponse;
-    }
 
 
 }

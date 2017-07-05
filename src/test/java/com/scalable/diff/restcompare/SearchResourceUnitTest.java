@@ -254,7 +254,7 @@ public class SearchResourceUnitTest {
     	
     	JsonBinaryDataEntity jsonBinaryDataEntityMock = new JsonBinaryDataEntity();
     	jsonBinaryDataEntityMock.setDirection("left");
-    	jsonBinaryDataEntityMock.setEncodedValue("MTAxMDAxMTE=");
+    	jsonBinaryDataEntityMock.setEncodedValue("MDExMDAwMDEwMTEwMTExMA==");
     	jsonBinaryDataEntityMock.setInputId(1);
     	jsonBinaryDataEntityMockList.add(jsonBinaryDataEntityMock);
     	
@@ -270,7 +270,7 @@ public class SearchResourceUnitTest {
     	
     	JsonBinaryDataEntity jsonBinaryDataEntityMock = new JsonBinaryDataEntity();
     	jsonBinaryDataEntityMock.setDirection("right");
-    	jsonBinaryDataEntityMock.setEncodedValue("MTAxMDEwMTEx");
+    	jsonBinaryDataEntityMock.setEncodedValue("MDExMTAxMTAwMTEwMDEwMTAxMTEwMDEwMDExMTEwMDE=");
     	jsonBinaryDataEntityMock.setInputId(1);
     	jsonBinaryDataEntityMockList.add(jsonBinaryDataEntityMock);
     	
@@ -286,7 +286,7 @@ public class SearchResourceUnitTest {
     	
     	JsonBinaryDataEntity jsonBinaryDataEntityMock = new JsonBinaryDataEntity();
     	jsonBinaryDataEntityMock.setDirection("left");
-    	jsonBinaryDataEntityMock.setEncodedValue("MTAxMDE=");
+    	jsonBinaryDataEntityMock.setEncodedValue("MDExMDAwMDEwMTExMDAxMQ==");
     	jsonBinaryDataEntityMock.setInputId(1);
     	jsonBinaryDataEntityMockList.add(jsonBinaryDataEntityMock);
     	
@@ -302,7 +302,7 @@ public class SearchResourceUnitTest {
     	
     	JsonBinaryDataEntity jsonBinaryDataEntityMock = new JsonBinaryDataEntity();
     	jsonBinaryDataEntityMock.setDirection("right");
-    	jsonBinaryDataEntityMock.setEncodedValue("MTAxMTE=");
+    	jsonBinaryDataEntityMock.setEncodedValue("MDExMDAwMDEwMTEwMTExMA==");
     	jsonBinaryDataEntityMock.setInputId(1);
     	jsonBinaryDataEntityMockList.add(jsonBinaryDataEntityMock);
     	
