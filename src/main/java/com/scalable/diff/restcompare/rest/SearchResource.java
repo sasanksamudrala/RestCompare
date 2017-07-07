@@ -168,7 +168,7 @@ public class SearchResource {
      * @return the decoded string
      * @throws UnsupportedEncodingException 
      */
-    private static String decodeBase64EncodedString(final String encodedString) throws UnsupportedEncodingException {
+    private String decodeBase64EncodedString(final String encodedString) throws UnsupportedEncodingException {
     	return new String(Base64.getUrlDecoder().decode(encodedString), "utf-8");
     }
     
@@ -180,7 +180,7 @@ public class SearchResource {
      *        
      * @return the text value string
      */
-    private static String binaryToText(String info)throws UnsupportedEncodingException{
+    private String binaryToText(String info)throws UnsupportedEncodingException{
 		String input = info.replaceAll("\\s+","");
 		StringBuilder output = new StringBuilder();
 		for(int i = 0; i <= input.length() - 8; i+=8)
@@ -204,7 +204,7 @@ public class SearchResource {
      * @return comparisonResultResponse
      *            the comparisonResultResponse object
      */
-    private static ComparisonResultResponse compareString(String rightText, String leftText, ComparisonResultResponse comparisonResultResponse) {
+    private ComparisonResultResponse compareString(String rightText, String leftText, ComparisonResultResponse comparisonResultResponse) {
     	if (rightText.length() != leftText.length()) {
             comparisonResultResponse.setResult("The data are not of Equal size");
         } else {
@@ -234,7 +234,7 @@ public class SearchResource {
      * @param encodedString
      * @return boolean value indicating the result
      */
-    private static boolean checkForBinaryDataAfterDecode(final String encodedString) {
+    private boolean checkForBinaryDataAfterDecode(final String encodedString) {
         try {
             String decodedString = new String(Base64.getUrlDecoder().decode(encodedString), "utf-8");
             String decodedStringTrim = decodedString.replaceAll("\\s+","");
