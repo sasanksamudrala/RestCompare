@@ -181,7 +181,7 @@ public class SearchResource {
      * @return the text value string
      */
     private static String binaryToText(String info)throws UnsupportedEncodingException{
-		String input = info;
+		String input = info.replaceAll("\\s+","");
 		StringBuilder output = new StringBuilder();
 		for(int i = 0; i <= input.length() - 8; i+=8)
 		{
@@ -237,7 +237,8 @@ public class SearchResource {
     private static boolean checkForBinaryDataAfterDecode(final String encodedString) {
         try {
             String decodedString = new String(Base64.getUrlDecoder().decode(encodedString), "utf-8");
-            return decodedString.matches("^[0-1]*$");
+            String decodedStringTrim = decodedString.replaceAll("\\s+","");
+            return decodedStringTrim.matches("^[0-1]*$");
             
         } catch (final UnsupportedEncodingException e) {
             return false;
