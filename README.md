@@ -1,6 +1,7 @@
 REST Compare
 ======================
 This is a web application for comparing the Base64 encoded binary value.
+Github url for project is, https://git.io/v5ljB
 
 ## Table of content
 
